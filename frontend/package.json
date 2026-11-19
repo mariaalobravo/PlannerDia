@@ -1,0 +1,11 @@
+{
+  "name": "mi-dia-frontend",
+  "version": "1.0.0",
+  "description": "Frontend de Mi Día: servidor Node sin dependencias que sirve la web y reenvía /api al backend Python",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "license": "MIT"
+}

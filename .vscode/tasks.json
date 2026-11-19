@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1 · Preparar backend (crear .venv + instalar Flask)",
+      "type": "shell",
+      "command": "python3 -m venv .venv && .venv/bin/pip install -r backend/requirements.txt",
+      "windows": {
+        "command": "python -m venv .venv; .venv\\Scripts\\pip install -r backend\\requirements.txt"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend: arrancar",
+      "type": "shell",
+      "command": ".venv/bin/python backend/app.py",
+      "windows": { "command": ".venv\\Scripts\\python backend\\app.py" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend: arrancar",
+      "type": "shell",
+      "command": "node frontend/server.js",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "2 · Arrancar todo (sin depurar)",
+      "dependsOn": ["Backend: arrancar", "Frontend: arrancar"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

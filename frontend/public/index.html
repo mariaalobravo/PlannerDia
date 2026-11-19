@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Día</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%236c5ce7'/><path d='M50 22v28l18 12' stroke='white' stroke-width='9' fill='none' stroke-linecap='round'/></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">Mi Día</div>
+
+    <div class="datenav">
+      <button id="prev" class="ghost" title="Día anterior (←)">‹</button>
+      <div class="date">
+        <div id="dateLabel" class="date-main"></div>
+        <div id="dateSub" class="date-sub"></div>
+      </div>
+      <button id="next" class="ghost" title="Día siguiente (→)">›</button>
+      <button id="todayBtn" class="pill" title="Ir a hoy (T)">Hoy</button>
+    </div>
+
+    <div class="week" id="week" title="Tus últimos 7 días"></div>
+  </header>
+
+  <main class="grid">
+    <!-- LISTA GENERAL -->
+    <section class="card" id="backlogCol">
+      <div class="row-between">
+        <h2>Lista general <span class="count" id="backlogCount"></span></h2>
+        <button class="link" id="newProject" title="Crear un proyecto para agrupar tareas">+ Proyecto</button>
+      </div>
+      <p class="hint">Ideas y cosas sin fecha, por proyectos. Arrástralas a la hora que quieras del horario.</p>
+      <form class="add" id="backlogForm">
+        <input id="backlogInput" placeholder="Añadir a la lista general…" autocomplete="off" />
+      </form>
+      <ul class="list" id="backlogList" data-zone="backlog"></ul>
+    </section>
+
+    <!-- HORARIO -->
+    <section class="card wide" id="scheduleCol">
+      <div class="row-between">
+        <h2>Horario</h2>
+        <button class="link" id="copyYesterday" title="Copia las horas y actividades del día anterior">↺ Repetir horario de ayer</button>
+      </div>
+      <form class="add" id="blockForm">
+        <input id="blockInput" placeholder="Ej: 9:30 Reunión equipo · 14 Comer · Gimnasio" autocomplete="off" />
+        <button class="pill">Añadir</button>
+      </form>
+      <ol class="timeline" id="timeline" data-zone="timeline"></ol>
+      <div class="empty" id="timelineEmpty" data-zone="timeline">
+        Escribe arriba la hora y la actividad.<br />
+        También puedes arrastrar aquí cualquier tarea.
+      </div>
+    </section>
+
+    <!-- REUNIONES -->
+    <section class="card" id="meetingsCol">
+      <div class="row-between">
+        <h2>Reuniones</h2>
+        <button class="link" id="newMeeting" title="Nueva reunión (R)">+ Reunión</button>
+      </div>
+      <p class="hint">Toma apuntes y saca de ahí actividades: selecciona el texto (o deja el cursor en la línea) y pulsa «✚ Actividad» o Ctrl+Enter.</p>
+      <div id="meetings"></div>
+      <div class="empty" id="meetingsEmpty">
+        Sin reuniones este día.<br />Pulsa «+ Reunión» para empezar a tomar apuntes.
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
